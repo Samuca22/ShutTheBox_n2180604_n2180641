@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS shutthebox;
 
 USE shutthebox;
 
-CREATE TABLE IF NOT EXISTS `user`(
+CREATE TABLE IF NOT EXISTS `users`(
 `id` INT NOT NULL AUTO_INCREMENT,
 `primeiroNome` VARCHAR(100) NOT NULL,
 `apelido` VARCHAR(100) NOT NULL,
@@ -12,19 +12,17 @@ CREATE TABLE IF NOT EXISTS `user`(
 `email` VARCHAR(100) NOT NULL,
 `dataNascimento` DATE NOT NULL,
 `estado` BOOLEAN NOT NULL,
-`admin` BOOLEAN NOT NULL,
+`administrador` BOOLEAN NOT NULL,
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB;
 
-/*
-CREATE TABLE IF NOT EXISTS `pontuacao`(
+CREATE TABLE IF NOT EXISTS `pontuacaos`(
 `userID` INT NOT NULL,
 `vitorias` INT NOT NULL,
 `derrotas` INT NOT NULL,
 `nJogos` INT NOT NULL,
-FOREIGN KEY (`userID`) REFERENCES `user(id)`
+FOREIGN KEY (`userID`) REFERENCES `users`(`id`)
 )ENGINE=InnoDB;
-*/
 
 -- DROP TABLE user;
 -- DROP TABLE pontuacao;
