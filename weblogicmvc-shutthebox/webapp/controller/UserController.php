@@ -26,7 +26,6 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
 
     public function top10()
     {
-
         //$users = User::find('all', array('order' => 'vitorias desc'));
         //return view::make('home.top10',compact('users'));
     }
@@ -59,54 +58,36 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
 
     public function store()
     {
+        // Receber dados via post
         $dados = Post::getAll();
+
+        // Definir campos padrão (user)
         $dados['estado'] = 1;
         $dados['administrador'] = 0;
+
+        // Criar novo user
         $user = new User($dados);
-        $pontuacao = new Pontuacao();
-        // $pontuacao->vitorias = 0;
-        // $pontuacao->derrotas = 0;
-        // $pontuacao->nJogos = 0;
-
-        if($user->is_valid() && $pontuacao->is_valid())
+        
+        
+        if($user->is_valid())
         {
+            // Salvar user na bd
             $user->save();
-            $pontuacao->save();
 
-            return View::make('home.login');
+            // Criar pontuacao do user e salvar na bd
+            $pontuacao = new Pontuacao();
+            $pontuacao->registarPontuacao($user->id);
+
+            return View::make('home.index');
         }
         else
         {
             return View::make('home.registo');
         }
-        
-
-
-        //Tracy\debugger::barDump($dados);
-        //$userfind = User::find('all',array('conditions' => array('username=?',$username)));
-        /*
-       Tracy\debugger::barDump(count($user));
-       if (count($userfind) != 0)
-        {
-
-            return View::make('home.register', ['error' => 'O username já existe']);
-        }
-
-        $userfind = User::find('all',array('conditions' => array('email=?',$email)));
-        if (count($userfind) != 0)
-        {
-
-            return View::make('home.register', ['error' => 'O email já existe']);
-        }
-
-
-        $user ->save();
-*/
     }
 
     public function show($id)
     {
-
         //return View::make('home.jogadores', compact('users'));
     }
 
