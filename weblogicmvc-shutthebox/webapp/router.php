@@ -21,6 +21,9 @@ Router::get('home/registo', 'HomeController/registo');
 Router::get('home/topten',  'HomeController/topten');
 Router::get('home/game',  'HomeController/game');
 
+Router::post('home/login', 'AuthController/login');
+Router::get('home/logout', 'AuthController/logout');
+
 
 Router::resource('user', 'UserController');
 Router::resource('pontuacao', 'UserController');

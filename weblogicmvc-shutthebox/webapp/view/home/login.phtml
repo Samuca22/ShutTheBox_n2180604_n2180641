@@ -10,14 +10,14 @@ Layout::includeLayout('header') ?>
 	<div class="row">
 		<div id="caixa-login" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<h2 class="text-center">LOGIN</h2>
-			<form>
+			<form action="<?= URL::toRoute('home/login') ?>" method="post">
 				<div>
 					<label for="username-login">Username</label>
-					<input id="username-login" type="text" class="form-control" placeholder="Nome de Utilizador">
+					<input id="username-login" name="username" type="text" class="form-control" placeholder="Nome de Utilizador">
 				</div>
 				<div>
 					<label for="senha-login">Password</label>
-					<input id="senha-login" type="password" class="form-control" placeholder="Senha">
+					<input id="senha-login" name="password" type="password" class="form-control" placeholder="Senha">
 				</div>
 				<div class="text-right">
 					<button class="btn" type="submit">Login</button>
