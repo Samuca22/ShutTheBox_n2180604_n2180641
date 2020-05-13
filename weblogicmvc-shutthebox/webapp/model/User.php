@@ -9,5 +9,4 @@ class User extends Model {
     public function applyHASH() {
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
     }
-
 };

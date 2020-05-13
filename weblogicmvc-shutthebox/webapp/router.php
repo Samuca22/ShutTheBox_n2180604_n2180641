@@ -23,6 +23,7 @@ Router::get('home/game',  'HomeController/game');
 
 
 Router::resource('user', 'UserController');
+Router::resource('pontuacao', 'UserController');
 
 
 

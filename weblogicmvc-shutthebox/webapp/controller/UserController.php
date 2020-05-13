@@ -63,10 +63,21 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         $dados['estado'] = 1;
         $dados['administrador'] = 0;
         $user = new User($dados);
+        $pontuacao = new Pontuacao();
+        // $pontuacao->vitorias = 0;
+        // $pontuacao->derrotas = 0;
+        // $pontuacao->nJogos = 0;
 
-        if($user->is_valid())
+        if($user->is_valid() && $pontuacao->is_valid())
         {
             $user->save();
+            $pontuacao->save();
+
+            return View::make('home.login');
+        }
+        else
+        {
+            return View::make('home.registo');
         }
         
 
