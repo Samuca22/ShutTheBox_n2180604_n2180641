@@ -1,0 +1,64 @@
+<?php
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('header') ?>
+
+<!-- container -->
+<div class="container">
+    <div class="row">
+        <div id="caixa-registo" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <h2 class="text-center">REGISTO</h2>
+            <form action="<?= URL::toRoute('user/store') ?>" method="post">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="nome">Nome</label>
+                        <input id="nome" name="primeironome" type="text" class="form-control" placeholder="Nome">
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="apelido">Apelido</label>
+                        <input id="apelido" name="apelido" type="text" class="form-control" placeholder="Apelido">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="data-nascimento">Data de Nascimento</label>
+                        <input type="text" name="datanascimento" id="data-nascimento" class="form-control" placeholder="DD/MM/AAAA">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="text" class="form-control" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="username-login">Username</label>
+                        <input id="username-login" name="username" type="text" class="form-control" placeholder="Nome de Utilizador">
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="senha-login">Password</label>
+                        <input id="senha-login" name="password" type="password" class="form-control" placeholder="Senha">
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <button class="btn" type="submit">Registo</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div> <!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

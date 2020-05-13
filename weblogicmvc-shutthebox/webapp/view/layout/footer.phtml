@@ -1,0 +1,35 @@
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="text-left">
+                    P-Web | Shut The Box
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <div class="text-right">
+                    Feito por: Ricardo Marques | Samuel Martins
+                </div>
+            </div>
+        </div>
+    </div> <!-- /row of widgets -->
+
+</footer>
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
+<?php
+
+use ArmoredCore\Facades\AssetBundler;
+use ArmoredCore\Facades\DebugRenderer;
+?>
+
+<?= AssetBundler::js() ?>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+</body>
+
+</html>

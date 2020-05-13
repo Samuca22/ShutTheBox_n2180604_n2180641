@@ -1,0 +1,31 @@
+<?php
+
+use ArmoredCore\WebObjects\Asset;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL; ?>
+
+<!-- Navbar -->
+<?php Layout::includeLayout('header') ?>
+
+
+<div class="container">
+    <div class="row text-center">
+        <h1 class="jumbotron-text">PARADICE</h1>
+        <div class="jumbotron-img">
+            <img src="<?= Asset::image('logo.png')?>" alt="Fire Dice Logo">
+        </div>
+        <div class="jumbotron-button-play">
+            <a class="btn" href="">PLAY</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<?php Layout::includeLayout('footer') ?>
