@@ -24,5 +24,19 @@ nJogos INT NOT NULL,
 FOREIGN KEY (userID) REFERENCES users(id)
 )ENGINE=InnoDB;
 
+-- ADMINISTRADOR
+INSERT INTO users (primeiroNome, apelido, username, password, email, dataNascimento, estado, administrador)
+VALUES ('Administrador', 'Administrador', 'admin', 'admin', 'admin@shutthebox.com', '1999-01-01', FALSE, TRUE);
+
+INSERT INTO pontuacaos (userID, vitorias, derrotas, nJogos)
+VALUES (1, 0, 0, 0);
+
+-- QUERY
+/* 
+SELECT * 
+FROM users
+JOIN pontuacaos ON users.id=pontuacaos.userID;
+*/
+
 -- DROP TABLE user;
 -- DROP TABLE pontuacao;

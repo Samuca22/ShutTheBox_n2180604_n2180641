@@ -1,0 +1,17 @@
+# # # # # # # # # # # # # # # #
+# Ignorar todos os ficheiros  #
+# # # # # # # # # # # # # # # #
+
+/* 
+
+# # # # # # # # # # # # # # 
+# Ficheiros não ignorados #
+# # # # # # # # # # # # # # 
+
+!/weblogicmvc-shutthebox
+!/.gitignore
+!/Documentos
+
+# Ficheiros que não são necessários
+/weblogicmvc/vendor
+/weblogicmvc/.idea
