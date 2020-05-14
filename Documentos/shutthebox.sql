@@ -29,14 +29,14 @@ FOREIGN KEY (userID) REFERENCES users(id)
 
 -- USER: ADMINISTRADOR
 
-INSERT INTO users (primeiroNome, apelido, username, password, email, dataNascimento estado, administrador)
-VALUES ('Admin', 'Admin', 'admin', 'admin', 'admin@shutthebox.com', '1999-01-01', TRUE, TRUE);
+INSERT INTO users (primeiroNome, apelido, username, password, email, dataNascimento, estado, administrador)
+VALUES ('Admin', 'Admin', 'admin', 'admin', 'admin@shutthebox.pt', '1999-01-01', TRUE, TRUE);
 
 -- QUERY
 /* 
 SELECT * 
 FROM users
-JOIN pontuacaos ON users.id=pontuacaos.userID;
+JOIN scores ON users.id=scores.userID;
 */
 
 -- DROP TABLE user;
@@ -59,8 +59,6 @@ CREATE TABLE IF NOT EXISTS `users`(
 `password` VARCHAR(100) NOT NULL,
 `email` VARCHAR(100) NOT NULL,
 `dataNascimento` DATE NOT NULL,
-`vitorias` INT NOT NULL DEFAULT 0,
-`derrotas` INT NOT NULL DEFAULT 0,
 `estado` BOOLEAN NOT NULL,
 `administrador` BOOLEAN NOT NULL,
 PRIMARY KEY (`id`)
@@ -69,24 +67,22 @@ PRIMARY KEY (`id`)
 CREATE TABLE IF NOT EXISTS `scores`(
 `id` INT NOT NULL AUTO_INCREMENT,
 `userID` INT NOT NULL,
-`pontuacao` INT NOT NULL DEFAULT '0',
+`pontuacao` INT NOT NULL,
+`resultado` BOOLEAN NOT NULL,
 `dataJogo` DATE,
 PRIMARY KEY (`id`),
 FOREIGN KEY (`userID`) REFERENCES `users`(`id`)
 )ENGINE=InnoDB;
 
 -- USER: ADMINISTRADOR
-INSERT INTO `users` (`primeiroNome`, `apelido`, `username`, `password`, `email`, `dataNascimento`, `vitorias`, `derrotas`, `estado`, `administrador`)
-VALUES ('Administrador', 'Administrador', 'admin', 'admin', 'admin@shutthebox.com', '1999-01-01', 0, 0, TRUE, TRUE);
-
-INSERT INTO `scores` (`userID`, `pontuacao`)
-VALUES (1, 0);
+INSERT INTO `users` (`primeiroNome`, `apelido`, `username`, `password`, `email`, `dataNascimento`, `estado`, `administrador`)
+VALUES ('Admin', 'Admin', 'admin', 'admin', 'admin@shutthebox.pt', '1999-01-01', TRUE, TRUE);
 
 -- QUERY
 /* 
 SELECT * 
 FROM users
-JOIN pontuacaos ON users.id=pontuacaos.userID;
+JOIN scores ON users.id=scores.userID;
 */
 
 -- DROP TABLE user;

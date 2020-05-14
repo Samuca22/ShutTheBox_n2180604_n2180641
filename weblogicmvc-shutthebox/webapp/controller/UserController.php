@@ -67,16 +67,11 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
 
         // Criar novo user
         $user = new User($dados);
-        
-        
+
         if($user->is_valid())
         {
             // Salvar user na bd
             $user->save();
-
-            // Criar pontuacao do user e salvar na bd
-            $pontuacao = new Pontuacao();
-            $pontuacao->registarPontuacao($user->id);
 
             return View::make('home.index');
         }

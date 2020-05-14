@@ -1,3 +1,7 @@
+/*************************************************************************
+* 	Código formatado para meter em: weblogicmvc-shutthebox/database/ 	 *
+*************************************************************************/
+
 -- DROP DATABASE shutthebox; 
 -- CREATE DATABASE IF NOT EXISTS `shutthebox`;
 
@@ -16,27 +20,27 @@ CREATE TABLE IF NOT EXISTS `users`(
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS `pontuacaos`(
+CREATE TABLE IF NOT EXISTS `scores`(
+`id` INT NOT NULL AUTO_INCREMENT,
 `userID` INT NOT NULL,
-`vitorias` INT NOT NULL DEFAULT '0',
-`derrotas` INT NOT NULL DEFAULT '0',
-`nJogos` INT NOT NULL DEFAULT '0',
+`pontuacao` INT NOT NULL,
+`resultado` BOOLEAN NOT NULL,
+`dataJogo` DATE,
+PRIMARY KEY (`id`),
 FOREIGN KEY (`userID`) REFERENCES `users`(`id`)
 )ENGINE=InnoDB;
 
 -- USER: ADMINISTRADOR
--- INSERT INTO `users` (`primeiroNome`, `apelido`, `username`, `password`, `email`, `dataNascimento`, `estado`, `administrador`)
--- VALUES ('Administrador', 'Administrador', 'admin', 'admin', 'admin@shutthebox.com', '1999-01-01', TRUE, TRUE);
-
--- INSERT INTO `pontuacaos` (`userID`, `vitorias`, `derrotas`, `nJogos`)
--- VALUES (1, 0, 0, 0);
+INSERT INTO `users` (`primeiroNome`, `apelido`, `username`, `password`, `email`, `dataNascimento`, `estado`, `administrador`)
+VALUES ('Admin', 'Admin', 'admin', 'admin', 'admin@shutthebox.pt', '1999-01-01', TRUE, TRUE);
 
 -- QUERY
 /* 
 SELECT * 
 FROM users
-JOIN pontuacaos ON users.id=pontuacaos.userID;
+JOIN scores ON users.id=scores.userID;
 */
 
 -- DROP TABLE user;
 -- DROP TABLE pontuacao;
+
