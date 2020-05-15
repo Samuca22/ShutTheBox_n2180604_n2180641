@@ -8,7 +8,6 @@ class Score extends Model{
     static $belongs_to = array(
         array('user', 'class_name'=>'User')
     );
-
     
     // public static function registarScore($id){
     //     $score = new Score();
