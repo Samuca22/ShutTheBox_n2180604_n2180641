@@ -4,6 +4,7 @@ use ArmoredCore\Controllers\BaseController;
 use ArmoredCore\WebObjects\Post;
 use ArmoredCore\WebObjects\Redirect;
 use ArmoredCore\WebObjects\View;
+use ArmoredCore\WebObjects\Session;
 
 
 class UserController extends BaseController implements \ArmoredCore\Interfaces\ResourceControllerInterface
@@ -40,6 +41,10 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
     public function create()
     {
         // return View::make('home.index');
+        if (!Session::has('user')) {
+            return View::make('home.registo');
+        }
+        return Redirect::toRoute('home/index');
     }
 
     /**
@@ -76,13 +81,7 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         }
         else
         {
-            // EDITAR MENSAGENS De ERRRO!
-            echo $user->errors->on('primeironome');
-            echo $user->errors->on('apelido');
-            echo $user->errors->on('username');
-            echo $user->errors->on('password');
-
-            return View::make('home.registo');
+            return Redirect::flashToRoute('user/create', ['user' => $user]);
         }
     }
 

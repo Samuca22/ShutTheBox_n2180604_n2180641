@@ -12,7 +12,7 @@ class AuthController extends BaseController
         $password = Post::get('password');
 
         $user = User::find('all',array('conditions' => array('username=?', $username)));
-        
+        // User::find_by_username_and_password($username, $password)
 
         if($user != NULL){
             $user = $user[0];

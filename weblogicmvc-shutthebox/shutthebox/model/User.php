@@ -13,7 +13,6 @@ class User extends Model
 
     
     // VALIDAÇÕES ** NOTA: Atualmente as validações são feitas para que o site nao se ""PARTA"", faltam mostrar as mesnagens de erro na página => echo $user->errors->on('nome do campo') **
-    /*
         static $validates_presence_of = array(
             array('primeironome', 'message' => 'Preenchimento obrigatório.'),
             array('apelido', 'message' => 'Preenchimento obrigatório.'),
@@ -30,17 +29,17 @@ class User extends Model
         );
 
         
-        static $validates_uniqueness_of = array(
-            array('username', 'message' => 'O username inserido já existe.'),  // Valida se o username já existe
-            array('email', 'message' => 'O email inserido já existe.')      // Valida se o email já existe
-        );
+        // static $validates_uniqueness_of = array(
+        //     array('username', 'message' => 'O username inserido já existe.'),  // Valida se o username já existe
+        //     array('email', 'message' => 'O email inserido já existe.')      // Valida se o email já existe
+        // );
         
         // Utiliza REGEX -> preg_match() para comparar strings
         static $validates_format_of = array(
             array('email', 'with' => '/^[^0-9][a-z0-9_]+([.][a-z0-9_]+)*[@][a-z0-9_]+([.][a-z0-9_]+)*[.][a-z]{2,4}$/', 'message' => 'Inválido. Preencher campo com um email válido.'),  // Verifica se o campo é preenchido com um email
             array('password', 'with' => '/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/', 'message' => 'Password fraca. Por favor escolha uma password com pelo menos 6 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.')
         );
-    */
+    
     
 };
 
