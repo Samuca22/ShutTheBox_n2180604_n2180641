@@ -9,11 +9,11 @@ class Score extends Model{
         array('user', 'class_name'=>'User')
     );
     
-    // public static function registarScore($id){
-    //     $score = new Score();
-    //     $score->pontuacao = "preencher com a pontuacao";
-    //     $score->dataJogo = date('d-m-Y H:i:s');
-    //     $score->userid = $id;
-    //     $pontuacao->save();
-    // }
+    //public static function registarScore($id){
+    //    $score = new Score();
+    //    $score->pontuacao = "preencher com a pontuacao";
+    //    $score->dataJogo = date('d-m-Y H:i:s');
+    //    $score->userid = $id;
+    //    $pontuacao->save();
+    //}
 };
