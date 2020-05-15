@@ -2,13 +2,12 @@
 
 use ArmoredCore\Controllers\BaseController;
 use ArmoredCore\WebObjects\Post;
+use ArmoredCore\WebObjects\Redirect;
 use ArmoredCore\WebObjects\View;
 
 
 class UserController extends BaseController implements \ArmoredCore\Interfaces\ResourceControllerInterface
 {
-
-
     /**
      * index (default route)
      * Responds to HTTP: GET
@@ -73,7 +72,7 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
             // Salvar user na bd
             $user->save();
 
-            return View::make('home.index');
+            Redirect::toRoute('home/index');
         }
         else
         {

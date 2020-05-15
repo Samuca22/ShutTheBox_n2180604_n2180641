@@ -11,23 +11,23 @@ use ArmoredCore\Facades\Router;
  *  URLEncoder/HTTPRouter Routing Rules
  *  Use convention: controllerName@methodActionName
  ****************************************************************************/
-
-Router::get('/',			'HomeController/index');
-Router::get('home/',		'HomeController/index');
-Router::get('home/index',	'HomeController/index');
-Router::get('home/start',	'HomeController/start');
-Router::get('home/login',	'HomeController/login');
-Router::get('home/registo', 'HomeController/registo');
-Router::get('home/topten',  'HomeController/topten');
-Router::get('home/game',  'HomeController/game');
-
-Router::post('home/login', 'AuthController/login');
-Router::get('home/logout', 'AuthController/logout');
-
-
-Router::resource('user', 'UserController');
-Router::resource('pontuacao', 'UserController');
-
+//
+//Router::get('/',			'HomeController/index');
+//Router::get('home/',		'HomeController/index');
+//Router::get('home/index',	'HomeController/index');
+//Router::get('home/start',	'HomeController/start');
+//Router::get('home/login',	'HomeController/login');
+//Router::get('home/registo', 'HomeController/registo');
+//Router::get('home/topten',  'HomeController/topten');
+//Router::get('home/game',  'HomeController/game');
+//
+//Router::post('home/login', 'AuthController/login');
+//Router::get('home/logout', 'AuthController/logout');
+//
+//
+//Router::resource('user', 'UserController');
+//Router::resource('pontuacao', 'UserController');
+//
 
 
 

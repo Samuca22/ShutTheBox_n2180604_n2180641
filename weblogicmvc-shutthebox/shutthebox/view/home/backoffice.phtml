@@ -1,0 +1,42 @@
+<?php
+
+use ArmoredCore\WebObjects\Asset;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Session;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('header-backoffice') ?>
+
+
+<!-- container -->
+<div class="container" id="topten">
+    <div class="row">
+        <h2 class="text-center">Lista de Jogadores</h2>
+    </div>
+    <div class="row">
+        <div id="caixa-topten" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Jogador</th>
+                        <th class="text-right">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>admin (admin@admin.com)</td>
+                        <td class="text-right">bloquear</td>
+                    </tr>
+                    <tr>
+                        <td>user (user@user.com)</td>
+                        <td class="text-right">bloquear</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div> <!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

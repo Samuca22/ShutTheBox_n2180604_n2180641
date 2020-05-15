@@ -1,7 +1,13 @@
 <?php
 use ArmoredCore\WebObjects\Asset;
 use ArmoredCore\Facades\AssetBundler;
+use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\URL;
+
+if(Session::has('user'))
+{
+    $username = Session::get('user')->username;
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +35,7 @@ use ArmoredCore\WebObjects\URL;
     <![endif]-->
 </head>
 
-<body class="game">
+<body class="home">
 <!-- Fixed navbar -->
 <div class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -38,22 +44,13 @@ use ArmoredCore\WebObjects\URL;
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             <a class="navbar-brand" href="<?= URL::toRoute('home/index')?>"><img class="nav-logo-img" src="<?= Asset::image('logo.png')?>" alt="WEBlogic MVC"><span class="nav-logo-text">PARADICE</span></a>
         </div>
-        <div class="navbar-collapse collapse text-center">
-            <div class="players-box">
-            <span class="span jogador1">
-                Samuel
-            </span>
-            <span class="span vs">
-                VS.
-            </span>
-            <span class="span jogador2">
-                Computer
-            </span>
-            </div>
-            
+        <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li><a href="<?= URL::toRoute('home/start')?>">Como Jogar?</a></li>
-                <li><a id="header-btn-sair" class="btn" href="<?= URL::toRoute('home/logout')?>">Sair</a></li>
+                <li><a href="<?= URL::toRoute('home/index')?>">Home</a></li>
+                <li><a href="<?= URL::toRoute('home/comojogar')?>">Como Jogar?</a></li>
+                <li><a href="<?= URL::toRoute('home/topten')?>">Top 10</a></li>
+                <li><a href="<?= URL::toRoute('home/definicoes')?>">Definições</a></li>
+                <li><a id="header-btn-sair" class="btn" href="<?= URL::toRoute('home/logout')?>">Sair - <?= $username ?></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

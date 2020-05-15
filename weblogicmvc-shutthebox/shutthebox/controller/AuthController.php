@@ -23,7 +23,14 @@ class AuthController extends BaseController
 
                 if(password_verify($password, $user->password)){
                     Session::set('user', $user);
-                    Redirect::toRoute('home/game');
+
+                    if($user->administrador == 1)
+                    {
+                        Redirect::toRoute('home/backoffice');
+                    } else {
+                        Redirect::toRoute('home/index');
+                    }
+                    
                 } else {
                     echo 'pass errada';
                 }
