@@ -64,6 +64,8 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
     {
         // Receber dados via post
         $dados = Post::getAll();
+        $username = Post::get('username');
+        $email = Post::get('email');
 
         // Definir campos padrão (user)
         $dados['estado'] = 1;
@@ -72,6 +74,18 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         // Criar novo user
         $user = new User($dados);
         
+        $findUsername = User::find_by_username($username);
+        if(count($findUsername) != 0)
+        {
+            return Redirect::flashToRoute('user/create', ['user' => $user]);
+        }
+
+        $findEmail = User::find_by_email($email);
+        if(count($findEmail) != 0)
+        {
+            return Redirect::flashToRoute('user/create', ['user' => $user]);
+        }
+
         if($user->is_valid())
         {
             // Salvar user na bd
