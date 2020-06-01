@@ -22,6 +22,8 @@
 
 use ArmoredCore\Facades\AssetBundler;
 use ArmoredCore\Facades\DebugRenderer;
+use ArmoredCore\WebObjects\Asset;
+
 ?>
 
 <?= AssetBundler::js() ?>
@@ -29,6 +31,7 @@ use ArmoredCore\Facades\DebugRenderer;
 <script>
     hljs.initHighlightingOnLoad();
 </script>
+<script src="<?= Asset::js('script.js') ?>"></script>
 
 </body>
 

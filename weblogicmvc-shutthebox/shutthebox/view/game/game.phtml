@@ -1,0 +1,280 @@
+<?php
+
+use ArmoredCore\WebObjects\Asset;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Session;
+use ArmoredCore\WebObjects\URL;
+
+$user = Session::get('user');
+Layout::includeLayout('game-header');
+
+$game = Session::get('game');
+?>
+
+<div id="tabuleiro-jogo">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[1] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 1) ?>" class="caixa-numero text-center">
+                        1
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 1) ?>" class="caixa-numero-bloqueado text-center">
+                        1
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-8 text-center">
+                Pontuação
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[1] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 1) ?>" class="caixa-numero-comp text-center">
+                        1
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 1) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        1
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[2] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 2) ?>" class="caixa-numero text-center">
+                        2
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 2) ?>" class="caixa-numero-bloqueado text-center">
+                        2
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-4 text-center pontuacao-user">
+                <span><?= $game->tabuleiro->pontuacaoP1 ?></span>
+            </div>
+            <div class="col-xs-4 text-center pontuacao-comp">
+                <span><?= $game->tabuleiro->pontuacaoP2 ?></span>
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[2] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 2) ?>" class="caixa-numero-comp text-center">
+                        2
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 2) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        2
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[3] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 3) ?>" class="caixa-numero text-center">
+                        3
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 3) ?>" class="caixa-numero-bloqueado text-center">
+                        3
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-8">
+
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[3] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 3) ?>" class="caixa-numero-comp text-center">
+                        3
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 3) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        3
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[4] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 4) ?>" class="caixa-numero text-center">
+                        4
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 4) ?>" class="caixa-numero-bloqueado text-center">
+                        4
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-8">
+
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[4] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 4) ?>" class="caixa-numero-comp text-center">
+                        4
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 4) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        4
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[5] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 5) ?>" class="caixa-numero text-center">
+                        5
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 5) ?>" class="caixa-numero-bloqueado text-center">
+                        5
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-8">
+
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[5] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 5) ?>" class="caixa-numero-comp text-center">
+                        5
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 5) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        5
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[6] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 6) ?>" class="caixa-numero text-center">
+                        6
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 6) ?>" class="caixa-numero-bloqueado text-center">
+                        6
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-8">
+
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[6] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 6) ?>" class="caixa-numero-comp text-center">
+                        6
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 6) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        6
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[7] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 7) ?>" class="caixa-numero text-center">
+                        7
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 7) ?>" class="caixa-numero-bloqueado text-center">
+                        7
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-2">
+
+            </div>
+            <div class="col-xs-2 text-center">
+                <img src=" <?= Asset::image('d' . $game->tabuleiro->resultadoDado1 . '.png') ?>" alt="">
+            </div>
+            <div class="col-xs-2 text-center">
+                <img src=" <?= Asset::image('d' . $game->tabuleiro->resultadoDado2 . '.png') ?>" alt="">
+            </div>
+            <div class="col-xs-2">
+
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[7] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 7) ?>" class="caixa-numero-comp text-center">
+                        7
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 7) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        7
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[8] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 8) ?>" class="caixa-numero text-center">
+                        8
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 8) ?>" class="caixa-numero-bloqueado text-center">
+                        8
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-8 text-center">
+                <a href="<?= URL::toRoute('game/lancarDados') ?>" class="btn btn-lancar-dados">lançar dados</a>
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[8] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 8) ?>" class="caixa-numero-comp text-center">
+                        8
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 8) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        8
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP1->numBlock[9] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 9) ?>" class="caixa-numero text-center">
+                        9
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 9) ?>" class="caixa-numero-bloqueado text-center">
+                        9
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-8">
+
+            </div>
+            <div class="col-xs-2">
+                <?php if ($game->tabuleiro->numerosBloqueadosP2->numBlock[9] == false) : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 9) ?>" class="caixa-numero-comp text-center">
+                        9
+                    </a>
+                <?php else : ?>
+                    <a href="<?= URL::toRoute('game/bloquearNumero', 9) ?>" class="caixa-numero-comp-bloqueado text-center">
+                        9
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,7 @@ class AuthController extends BaseController
             $user = $user[0];
 
             if($user->estado == 0){
-                echo 'block';
+                Redirect::toRoute('home/login');
             } else {
 
                 if(password_verify($password, $user->password)){
@@ -32,12 +32,12 @@ class AuthController extends BaseController
                     }
                     
                 } else {
-                    echo 'pass errada';
+                    Redirect::toRoute('home/login');
                 }
             }
             
         } else {
-            echo 'user não existe';
+            Redirect::toRoute('home/login');
         }
     }
 

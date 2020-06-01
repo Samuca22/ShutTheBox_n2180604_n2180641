@@ -103,7 +103,6 @@ body{
 }
 
 /**** INDEX ****/
-
 .home{
     background: url('../../../public/img/background1.jpg') no-repeat top center;
     background-size: cover;
@@ -268,10 +267,23 @@ body{
 }
 
 #tabuleiro-jogo .caixa-numero, #tabuleiro-jogo .caixa-numero-comp{
+    display: inline-block;
     height: 60px;
     width: 60px;
     line-height: 60px;
     border: 1px solid #fff;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+#tabuleiro-jogo .caixa-numero-bloqueado, #tabuleiro-jogo .caixa-numero-comp-bloqueado{
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #242B48;
+    text-decoration: none;
     border-radius: 5px;
     transition: 0.2s;
 }
@@ -286,51 +298,44 @@ body{
 }
 
 #tabuleiro-jogo .caixa-numero:hover, #tabuleiro-jogo .caixa-numero-comp:hover, #tabuleiro-jogo .btn.btn-lancar-dados:hover{
+    cursor: pointer;
     background-color: rgb(255, 255, 255);
     color: #242B48;
+    text-decoration: none;
 }
 
-#tabuleiro-jogo .caixa-numero-comp{
+#tabuleiro-jogo .caixa-numero-comp, #tabuleiro-jogo .caixa-numero-comp-bloqueado{
     float: right;
 }
 
+/**** BACKOFFICE ****/
+#back-office h2{
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+}
 
+.backoffice-player:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
 
+.caixa-backoffice *{
+    color: #ffffff;
+}
 
+.caixa-backoffice{
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 16px 8px 0 8px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.caixa-backoffice .table tr{
+    font-size: 16px;
+    height: 40px;
+}
 /**** FOOTER ****/
 
 .footer{

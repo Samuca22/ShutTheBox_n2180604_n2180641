@@ -3,6 +3,7 @@
 use ArmoredCore\Controllers\BaseController;
 use ArmoredCore\WebObjects\Post;
 use ArmoredCore\WebObjects\Redirect;
+use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\View;
 
 
@@ -19,15 +20,9 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
      */
     public function index()
     {
-        //$users = User::all();
-        //return view::make('home.jogadores',compact('users'));
+
     }
 
-    public function top10()
-    {
-        //$users = User::find('all', array('order' => 'vitorias desc'));
-        //return view::make('home.top10',compact('users'));
-    }
     /**
      * create
      * Responds to HTTP: GET
@@ -39,7 +34,7 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
      */
     public function create()
     {
-        // return View::make('home.index');
+        return View::make('user.registo');
     }
 
     /**
@@ -71,6 +66,8 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         {
             // Salvar user na bd
             $user->save();
+            
+            Session::set('user', $user);
 
             Redirect::toRoute('home/index');
         }
@@ -111,15 +108,31 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         $user->update_attributes(array('email' => $dados['email']));
         $user->update_attributes(array('dtanasc' => $dados['dtanasc']));
 
-
-
-
-
         return View::make('home.index');*/
     }
 
-    public function destroy($id)
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function block($id)
     {
-        // TODO: Implement destroy() method.
+        $user = User::find($id);
+
+        if($user != Session::get('user')){
+            if($user->estado == 0){
+                $user->estado = 1;
+            } else {
+                $user->estado = 0;
+            }
+    
+            $user->save();
+        }
+        
+        return Redirect::toRoute('home/backoffice');
+    }
+
+    public function destroy($id){
+
     }
 }

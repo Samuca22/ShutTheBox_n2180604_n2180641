@@ -50,7 +50,7 @@ if(Session::has('user'))
                 <li><a href="<?= URL::toRoute('home/comojogar')?>">Como Jogar?</a></li>
                 <li><a href="<?= URL::toRoute('home/topten')?>">Top 10</a></li>
                 <li><a href="<?= URL::toRoute('home/definicoes')?>">Definições</a></li>
-                <li><a id="header-btn-sair" class="btn" href="<?= URL::toRoute('home/logout')?>">Sair - <?= $username ?></a></li>
+                <li><a id="header-btn-sair" class="btn" href="<?= URL::toRoute('auth/logout')?>">Sair - <?= $username ?></a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

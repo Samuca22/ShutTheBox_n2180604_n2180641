@@ -16,18 +16,18 @@ Router::get('/',			'HomeController/index');
 Router::get('home/',		'HomeController/index');
 Router::get('home/index',	'HomeController/index');
 Router::get('home/start',	'HomeController/start');
-Router::get('home/login',	'HomeController/login');
-Router::get('home/registo', 'HomeController/registo');
 Router::get('home/topten',  'HomeController/topten');
-Router::get('home/game',  'HomeController/game');
+Router::get('home/login', 'HomeController/login');
 Router::get('home/backoffice',  'HomeController/backoffice');
 
-Router::post('home/login', 'AuthController/login');
-Router::get('home/logout', 'AuthController/logout');
+Router::get('auth/logout', 'AuthController/logout');
+Router::post('auth/login', 'AuthController/login');
+Router::get('game/game',  'GameController/game');
+Router::get('game/lancarDados',  'GameController/lancarDados');
+Router::get('game/bloquearNumero',  'GameController/bloquearNumero');
 
 
 Router::resource('user', 'UserController');
-Router::resource('pontuacao', 'UserController');
 
 
 

@@ -16,10 +16,10 @@ class HomeController extends BaseController
 
     public function index()
     {
-        if(Session::has('user')){
+        if (Session::has('user')) {
             $user = Session::get('user');
 
-            if($user->administrador == 1){
+            if ($user->administrador == 1) {
                 return Redirect::toRoute('home/backoffice');
             }
         }
@@ -37,44 +37,32 @@ class HomeController extends BaseController
     public function registo()
     {
         if (!Session::has('user')) {
-            return View::make('home.registo');
+            return View::make('user.create');
         }
         return Redirect::toRoute('home/index');
     }
 
     public function topten()
     {
-        if(Session::has('user'))
-        {
+        if (Session::has('user')) {
             $user = Session::get('user');
-            if($user->administrador == 1){
+            if ($user->administrador == 1) {
                 return Redirect::toRoute('home/backoffice');
             }
         }
         return View::make('home.top-ten');
     }
-
-    public function game()
-    {
-        if(Session::has('user')){
-            $user = Session::get('user');
-            if($user->administrador){
-                return Redirect::toRoute('home/backoffice');
-            }
-            return View::make('home.game');
-        } 
-        return Redirect::toRoute('home/login');
-    }
-
+    
     public function backoffice()
     {
+        $users = User::all();
         // Verificar existência de utilizador logado
         if (Session::has('user')) {
             $user = Session::get('user');
 
             // Verificar se utilizador logado é admin
             if ($user->administrador == 1) {
-                return View::make('home.backoffice');
+                return View::make('home.backoffice', ['users' => $users]);
             } else {
                 return Redirect::toRoute('home/index');
             }
