@@ -12,13 +12,13 @@ class AuthController extends BaseController
         $password = Post::get('password');
 
         $user = User::find('all',array('conditions' => array('username=?', $username)));
-        // User::find_by_username_and_password($username, $password)
 
+        
         if($user != NULL){
             $user = $user[0];
 
             if($user->estado == 0){
-                echo 'block';
+                Redirect::toRoute('home/login');
             } else {
 
                 if(password_verify($password, $user->password)){
@@ -32,12 +32,12 @@ class AuthController extends BaseController
                     }
                     
                 } else {
-                    echo 'pass errada';
+                    Redirect::toRoute('home/login');
                 }
             }
             
         } else {
-            echo 'user não existe';
+            Redirect::toRoute('home/login');
         }
     }
 

@@ -74,17 +74,17 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         // Criar novo user
         $user = new User($dados);
         
-        $findUsername = User::find_by_username($username);
-        if(count($findUsername) != 0)
-        {
-            return Redirect::flashToRoute('user/create', ['user' => $user]);
-        }
+        // $findUsername = User::find_by_username($username);
+        // if(count($findUsername) != 0)
+        // {
+        //     return Redirect::flashToRoute('user/create', ['user' => $user]);
+        // }
 
-        $findEmail = User::find_by_email($email);
-        if(count($findEmail) != 0)
-        {
-            return Redirect::flashToRoute('user/create', ['user' => $user]);
-        }
+        // $findEmail = User::find_by_email($email);
+        // if(count($findEmail) != 0)
+        // {
+        //     return Redirect::flashToRoute('user/create', ['user' => $user]);
+        // }
 
         if($user->is_valid())
         {
@@ -123,11 +123,7 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         $user->update_attributes(array('passsword' => password_hash($dados['passsword'], PASSWORD_DEFAULT)));
         $user->update_attributes(array('email' => $dados['email']));
         $user->update_attributes(array('dtanasc' => $dados['dtanasc']));
-
-
-
-
-
+        
         return View::make('home.index');*/
     }
 
