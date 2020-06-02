@@ -19,6 +19,7 @@ Router::get('home/start',	'HomeController/start');
 Router::get('home/topten',  'HomeController/topten');
 Router::get('home/login', 'HomeController/login');
 Router::get('home/backoffice',  'HomeController/backoffice');
+Router::get('home/definicoes',  'HomeController/definicoes');
 
 Router::get('auth/logout', 'AuthController/logout');
 Router::post('auth/login', 'AuthController/login');

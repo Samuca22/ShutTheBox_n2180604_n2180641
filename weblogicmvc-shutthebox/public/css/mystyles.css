@@ -240,6 +240,78 @@ body{
     height: 40px;
 }
 
+/**** DEFINIÇÕES ****/
+#caixa-estatisticas, #caixa-dados-pessoais{
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+#caixa-estatisticas *, #caixa-dados-pessoais *{
+    margin: 0;
+}
+
+#caixa-estatisticas, #caixa-dados-pessoais{
+    padding: 0;
+}
+
+#caixa-estatisticas h2, #caixa-dados-pessoais h2{
+    margin-top: 30px;
+    margin-bottom: 60px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#caixa-dados-pessoais label{
+    color: #fff;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+#caixa-dados-pessoais input{
+    margin-bottom: 20px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: #fff;
+}
+
+#caixa-dados-pessoais ::-webkit-input-placeholder{
+    font-weight: 100;
+    color: rgb(223, 223, 223);
+}
+
+#caixa-dados-pessoais button{
+    margin-bottom: 100px;
+}
+
+#caixa-dados-pessoais button{
+    margin-bottom: 20px;
+}
+
+#caixa-dados-pessoais button{
+    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 18px;
+    color: #fff;
+    transition: 0.2s;
+}
+
+#caixa-dados-pessoais button:hover{
+    background-color: rgb(255, 255, 255);
+    color: #3FF018;
+}
+
+#caixa-dados-pessoais hr, #caixa-estatisticas hr{
+    border: 1px solid rgba(255, 255, 255, 0.205);
+}
+
+#caixa-dados-pessoais hr{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
 /**** GAME ****/
 .game{
     background: url('../../../public/img/background2.jpg') no-repeat top center;

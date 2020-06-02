@@ -70,4 +70,8 @@ class HomeController extends BaseController
             return Redirect::toRoute('home/index');
         }
     }
+
+    public function definicoes(){
+        return View::make('user.definicoes');
+    }
 }
