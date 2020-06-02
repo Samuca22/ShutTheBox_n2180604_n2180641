@@ -68,4 +68,8 @@ class GameController extends BaseController
         return Redirect::toRoute('game/game');
     }
    
+    public function resultado()
+    {
+        return View::Make('game/resultado');
+    }
 }

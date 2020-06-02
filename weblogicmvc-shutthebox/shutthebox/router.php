@@ -25,6 +25,7 @@ Router::post('auth/login', 'AuthController/login');
 Router::get('game/game',  'GameController/game');
 Router::get('game/lancarDados',  'GameController/lancarDados');
 Router::get('game/bloquearNumero',  'GameController/bloquearNumero');
+Router::get('game/resultado', 'GameController/resultado');
 
 
 Router::resource('user', 'UserController');

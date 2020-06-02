@@ -1,0 +1,61 @@
+<?php
+
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Session;
+use ArmoredCore\WebObjects\URL;
+
+$user = Session::get('user');
+Layout::includeLayout('game-header');
+
+$game = Session::get('game');
+?>
+
+<div id="resultado-jogo">
+    <h1 class="text-center" style="color: #3FF018">Vitória</h1> <!--VERMELHO: #E12D2D -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2">
+
+                </div>
+                <div class="col-xs-3 text-center">
+                    You
+                </div>
+                <div class="col-xs-2">
+                    
+                </div>
+                <div class="col-xs-3 text-center">
+                    Computador
+                </div>
+                <div class="col-xs-2">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+
+                </div>
+                <div class="col-xs-3 text-center">
+                    3
+                </div>
+                <div class="col-xs-2">
+                    
+                </div>
+                <div class="col-xs-3 text-center">
+                    12
+                </div>
+                <div class="col-xs-2">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="" class="btn btn-lancar-dados">
+                        Novo jogo
+                    </a>
+                    <a href="" class="btn btn-sair-jogo">
+                        Sair
+                    </a>
+                </div>
+            </div>
+        </div>
+</div>
