@@ -54,8 +54,6 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
     {
         // Receber dados via post
         $dados = Post::getAll();
-        $username = Post::get('username');
-        $email = Post::get('email');
 
         // Definir campos padrão (user)
         $dados['estado'] = 1;
@@ -102,31 +100,37 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         return View::make('user.definicoes', ['user' => $user]);
     }
 
-    // public function definicoes()
-    // {
-    //     return View::make('user.definicoes');
-    // }
-
     public function update($id)
     {
         $user = User::find($id);
         $dados = Post::getAll();
+        $emailValido = true;
+        if($user->email != $dados['email'])
+        {
+            $findEmail = User::find_by_email($dados['email']);
+            if(count($findEmail) != 0)
+            {
+                $emailValido = false;
+            }
+            else
+            {
+                $emailValido = true;
+            }
+        }
 
         $user->update_attributes(Post::getAll());
-        $user->update_attributes(array('password' => password_hash($dados['password'], PASSWORD_DEFAULT)));
+        // $user->update_attributes(array('password' => password_hash($dados['password'], PASSWORD_DEFAULT)));        
 
-        if($user->is_valid())
+        if($user->is_valid() && $emailValido == true)
         {
             $user->save();
 
             Session::set('user', $user);
 
-            Redirect::toRoute('home/index');
+            return Redirect::toRoute('home/index');
         }
-        else
-        {
-            Redirect::flashToRoute('user/edit', ['user' => $user], $id);
-        }
+
+        return Redirect::flashToRoute('user/edit', ['user' => $user], $id);
     }
 
     /**

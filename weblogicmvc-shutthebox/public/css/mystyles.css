@@ -257,7 +257,7 @@ body{
 
 #caixa-estatisticas h2, #caixa-dados-pessoais h2{
     margin-top: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 45px;
     color: #fff;
     font-size: 40px;
     font-weight: bold;
@@ -270,9 +270,19 @@ body{
 }
 
 #caixa-estatisticas span, #caixa-dados-pessoais span{
+    margin-bottom: 20px;
     color: #fff;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+
+#caixa-estatisticas .row.stats-row{
+    margin-bottom: 15px;
+}
+
+#caixa-dados-pessoais .row.username-row{
+    margin-bottom: 15px;
 }
 
 #caixa-dados-pessoais input{
@@ -290,9 +300,6 @@ body{
 
 #caixa-dados-pessoais button{
     margin-bottom: 100px;
-}
-
-#caixa-dados-pessoais button{
     margin-bottom: 20px;
 }
 
