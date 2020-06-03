@@ -105,6 +105,7 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         $user = User::find($id);
         $dados = Post::getAll();
         $emailValido = true;
+
         if($user->email != $dados['email'])
         {
             $findEmail = User::find_by_email($dados['email']);
