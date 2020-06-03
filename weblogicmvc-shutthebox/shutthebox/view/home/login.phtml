@@ -6,8 +6,8 @@ use ArmoredCore\WebObjects\Data;
 use ArmoredCore\WebObjects\ErrMgr;
 
 Layout::includeLayout('header') ?>
-<!--  $user = Data::get('user') ?>
- ErrMgr::attach('user') ?> -->
+<?php $user = Data::get('user')?>
+<?php ErrMgr::attach($user) ?>
 
 <!-- container -->
 <div class="container">
@@ -17,13 +17,13 @@ Layout::includeLayout('header') ?>
 			<form action="<?= URL::toRoute('auth/login') ?>" method="post">
 				<div>
 					<label for="username-login">Username</label>
-					<input id="username-login" name="username" type="text" class="form-control" placeholder="Nome de Utilizador"  required>
-					<!-- <span> ErrMgr::bind('username') ?></span> -->
+					<input id="username-login" name="username" type="text" class="form-control" placeholder="Nome de Utilizador" required>
+					<span><?= ErrMgr::bind('username') ?></span>
 				</div>
 				<div>
 					<label for="senha-login">Password</label>
 					<input id="senha-login" name="password" type="password" class="form-control" placeholder="Senha" required>
-					<!-- <span> ErrMgr::bind('password') ?></span> -->
+					<span><?= ErrMgr::bind('password') ?></span>
 				</div>
 				<div class="text-right">
 					<button class="btn" type="submit">Login</button>

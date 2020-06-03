@@ -54,6 +54,8 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
     {
         // Receber dados via post
         $dados = Post::getAll();
+        $username = Post::get('username');
+        $email = Post::get('email');
 
         // Definir campos padrão (user)
         $dados['estado'] = 1;
@@ -62,24 +64,30 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         // Criar novo user
         $user = new User($dados);
         
+        // $findUsername = User::find_by_username($username);
+        // if(count($findUsername) != 0)
+        // {
+        //     return Redirect::flashToRoute('user/create', ['user' => $user]);
+        // }
+
+        // $findEmail = User::find_by_email($email);
+        // if(count($findEmail) != 0)
+        // {
+        //     return Redirect::flashToRoute('user/create', ['user' => $user]);
+        // }
+
         if($user->is_valid())
         {
             // Salvar user na bd
             $user->save();
-            
+
             Session::set('user', $user);
 
             Redirect::toRoute('home/index');
         }
         else
         {
-            // EDITAR MENSAGENS De ERRRO!
-            echo $user->errors->on('primeironome');
-            echo $user->errors->on('apelido');
-            echo $user->errors->on('username');
-            echo $user->errors->on('password');
-
-            return View::make('home.registo');
+            return Redirect::flashToRoute('user/create', ['user' => $user]);
         }
     }
 
@@ -111,11 +119,13 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         {
             $user->save();
 
+            Session::set('user', $user);
+
             Redirect::toRoute('home/index');
         }
         else
         {
-            Redirect::flashToRoute('user/definicoes', ['user' => $user], $id);
+            Redirect::flashToRoute('user/edit', ['user' => $user], $id);
         }
     }
 

@@ -269,6 +269,12 @@ body{
     font-size: 16px;
 }
 
+#caixa-estatisticas span, #caixa-dados-pessoais span{
+    color: #fff;
+    font-weight: normal;
+    font-size: 16px;
+}
+
 #caixa-dados-pessoais input{
     margin-bottom: 20px;
     height: 40px;
