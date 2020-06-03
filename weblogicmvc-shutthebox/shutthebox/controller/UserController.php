@@ -90,25 +90,33 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
 
     public function edit($id)
     {
-        /*
         $user = User::find($id);
-        return View::make('home.edit', ['user' => $user]);
-*/
+        return View::make('user.definicoes', ['user' => $user]);
     }
+
+    // public function definicoes()
+    // {
+    //     return View::make('user.definicoes');
+    // }
 
     public function update($id)
     {
-        /*
-
-        $dados = Post::getAll();
         $user = User::find($id);
+        $dados = Post::getAll();
 
-        $user->update_attributes(array('nome' => $dados['nome']));
-        $user->update_attributes(array('passsword' => password_hash($dados['passsword'], PASSWORD_DEFAULT)));
-        $user->update_attributes(array('email' => $dados['email']));
-        $user->update_attributes(array('dtanasc' => $dados['dtanasc']));
+        $user->update_attributes(Post::getAll());
+        $user->update_attributes(array('password' => password_hash($dados['password'], PASSWORD_DEFAULT)));
 
-        return View::make('home.index');*/
+        if($user->is_valid())
+        {
+            $user->save();
+
+            Redirect::toRoute('home/index');
+        }
+        else
+        {
+            Redirect::flashToRoute('user/definicoes', ['user' => $user], $id);
+        }
     }
 
     /**

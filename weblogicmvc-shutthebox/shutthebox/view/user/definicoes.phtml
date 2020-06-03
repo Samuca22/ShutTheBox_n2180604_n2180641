@@ -15,7 +15,7 @@ Layout::includeLayout('header-login');
             <h2 class="text-center">Estatísticas</h2>
                 <div class="row">
                     <div class="col-xs-4">
-                        <span for="nome">Vintórias</span>
+                        <span for="nome">Vitórias</span>
                     </div>
                     <div class="col-xs-4">
                         <span for="apelido">Derrotas</span>
@@ -27,7 +27,7 @@ Layout::includeLayout('header-login');
     </div>
         <div id="caixa-dados-pessoais" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <h2 class="text-center">Dados Pessoais</h2>
-            <form action="<?=URL::toRoute('user/store')?>" method="post">
+            <form action="<?=URL::toRoute('user/update', $user->id)?>" method="post">
                 <div class="row">
                     <div class="col-xs-6">
                         <label for="nome">Nome</label>
