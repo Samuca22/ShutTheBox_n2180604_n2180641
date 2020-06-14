@@ -4,7 +4,7 @@ use ActiveRecord\Model;
 
 class User extends Model
 {
-    static $before_save = array('applyHASH');
+    static $before_create = array('applyHASH');
     static $after_validation_on_create = array('validate');
 
     public function applyHASH()

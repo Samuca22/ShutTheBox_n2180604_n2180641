@@ -6,7 +6,6 @@ use ArmoredCore\WebObjects\Redirect;
 use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\View;
 
-
 class UserController extends BaseController implements \ArmoredCore\Interfaces\ResourceControllerInterface
 {
     /**
@@ -61,7 +60,7 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
 
         // Criar novo user
         $user = new User($dados);
-        
+
         // $findUsername = User::find_by_username($username);
         // if(count($findUsername) != 0)
         // {
@@ -74,17 +73,14 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         //     return Redirect::flashToRoute('user/create', ['user' => $user]);
         // }
 
-        if($user->is_valid())
-        {
+        if ($user->is_valid()) {
             // Salvar user na bd
             $user->save();
 
             Session::set('user', $user);
 
             Redirect::toRoute('home/index');
-        }
-        else
-        {
+        } else {
             return Redirect::flashToRoute('user/create', ['user' => $user]);
         }
     }
@@ -106,23 +102,35 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         $dados = Post::getAll();
         $emailValido = true;
 
-        if($user->email != $dados['email'])
+        if ($user->email != $dados['email']) 
         {
             $findEmail = User::find_by_email($dados['email']);
-            if(count($findEmail) != 0)
+            if (count($findEmail) != 0) 
             {
                 $emailValido = false;
-            }
-            else
+            } 
+            else 
             {
                 $emailValido = true;
             }
+        }   
+
+        if(empty($dados['password']))
+        {
+            $user->update_attributes(array('primeironome' => $dados['primeironome']));
+            $user->update_attributes(array('apelido' => $dados['apelido']));
+            $user->update_attributes(array('email' => $dados['email']));
+            $user->update_attributes(array('datanascimento' => $dados['datanascimento']));
+        }
+        else
+        {
+            $user->update_attributes(Post::getAll());
+            $user->update_attributes(array('password' => password_hash($dados['password'], PASSWORD_DEFAULT)));
         }
 
-        $user->update_attributes(Post::getAll());
-        // $user->update_attributes(array('password' => password_hash($dados['password'], PASSWORD_DEFAULT)));        
+        // $user->update_attributes(Post::getAll());
 
-        if($user->is_valid() && $emailValido == true)
+        if ($user->is_valid() && $emailValido == true) 
         {
             $user->save();
 
@@ -142,20 +150,21 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
     {
         $user = User::find($id);
 
-        if($user != Session::get('user')){
-            if($user->estado == 0){
+        if ($user != Session::get('user')) {
+            if ($user->estado == 0) {
                 $user->estado = 1;
             } else {
                 $user->estado = 0;
             }
-    
+
             $user->save();
         }
-        
+
         return Redirect::toRoute('home/backoffice');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
 
     }
 }
