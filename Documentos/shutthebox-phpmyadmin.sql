@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `shutthebox`
 --
+DROP DATABASE IF EXISTS shutthebox;
 CREATE DATABASE IF NOT EXISTS shutthebox;
 USE shutthebox;
 -- --------------------------------------------------------
@@ -38,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `scores` (
   `dataJogo` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `administrador` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 --
 -- Extraindo dados da tabela `users`
