@@ -28,12 +28,13 @@ class GameEngine
     // Lógia de jogo para computador
     public function computadorJoga()
     {
+        $this->tabuleiro->lancarDado();
+        $somaDados = $this->tabuleiro->resultadoDado1 + $this->tabuleiro->resultadoDado2;
+        $numerosDesbloqueados = $this->tabuleiro->numerosBloqueadosP2->getNumerosDesbloqueados();
         do {
             // Variável que verifica se alguma combinação já foi encontrada.
             $combinacao = false;
-            $this->tabuleiro->lancarDado();
-            $somaDados = $this->tabuleiro->resultadoDado1 + $this->tabuleiro->resultadoDado2;
-            $numerosDesbloqueados = $this->tabuleiro->numerosBloqueadosP2->getNumerosDesbloqueados();
+
 
             // Verifica a possibilidade de combinação entre 2 números
             if (!$combinacao) {
@@ -44,6 +45,9 @@ class GameEngine
 
                                 $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado, $somaDados);
                                 $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado2, $somaDados);
+                                $this->tabuleiro->lancarDado();
+                                $somaDados = $this->tabuleiro->resultadoDado1 + $this->tabuleiro->resultadoDado2;
+                                $numerosDesbloqueados = $this->tabuleiro->numerosBloqueadosP2->getNumerosDesbloqueados();
                                 $combinacao = true;
                                 // Continua a jogar
                             }
@@ -69,6 +73,9 @@ class GameEngine
                                                 $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado2, $somaDados);
                                                 $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado3, $somaDados);
                                                 $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado4, $somaDados);
+                                                $this->tabuleiro->lancarDado();
+                                                $somaDados = $this->tabuleiro->resultadoDado1 + $this->tabuleiro->resultadoDado2;
+                                                $numerosDesbloqueados = $this->tabuleiro->numerosBloqueadosP2->getNumerosDesbloqueados();
                                                 $combinacao = true;
                                                 // Continua a jogar
                                             }
@@ -93,6 +100,9 @@ class GameEngine
                                         $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado, $somaDados);
                                         $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado2, $somaDados);
                                         $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado3, $somaDados);
+                                        $this->tabuleiro->lancarDado();
+                                        $somaDados = $this->tabuleiro->resultadoDado1 + $this->tabuleiro->resultadoDado2;
+                                        $numerosDesbloqueados = $this->tabuleiro->numerosBloqueadosP2->getNumerosDesbloqueados();
                                         $combinacao = true;
                                         // Continua a jogar
                                     }
@@ -110,12 +120,15 @@ class GameEngine
                     if ($desbloqueado == $somaDados) {
 
                         $this->tabuleiro->numerosBloqueadosP2->bloquearNumero($desbloqueado, $somaDados);
+                        $this->tabuleiro->lancarDado();
+                        $somaDados = $this->tabuleiro->resultadoDado1 + $this->tabuleiro->resultadoDado2;
+                        $numerosDesbloqueados = $this->tabuleiro->numerosBloqueadosP2->getNumerosDesbloqueados();
                         $combinacao = true;
                         // Continua a jogar
                     }
                 }
             }
-        
+
             // Computador acaba de jogar após se verificar final de jogada no modelo tabuleiro e se não obteve nenhuma combinação na última iteração
         } while ($this->tabuleiro->checkFinalJogadaP2($somaDados) == false && $combinacao == true);
 

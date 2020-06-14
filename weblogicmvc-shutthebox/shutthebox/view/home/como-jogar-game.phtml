@@ -1,0 +1,49 @@
+<?php
+
+use ArmoredCore\WebObjects\Asset;
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\Session;
+use ArmoredCore\WebObjects\URL;
+
+if (Session::has('user')) {
+    Layout::includeLayout('game-header');
+}
+?>
+
+<!-- container -->
+<div class="container" id="topten">
+    <div class="row">
+        <h2 class="text-center">Como Jogar?</h2>
+    </div>
+    <div class="row">
+        <div id="caixa-topten" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" style="color: #fff; font-size: 18px;">
+            <strong>1º Passo:</strong>
+            Após iniciar o jogo lançe os dados <br><br>
+
+            <strong>2º Passo:</strong> 
+            De seguida, o jogador de acordo com o valor obtido pela soma dos dados deve
+            escolher quais os números que pretende bloquear. <br><br>
+
+            <strong>3º Passo:</strong> 
+            O passo 1 e 2 repetem-se até que a combinação dos números desbloqueados não seja possível, de acordo com o valor da soma dos dados. <br><br>
+
+            <strong>4º Passo:</strong> 
+            Após isso contabiliza-se o valor de números desbloqueados para o jogador. <br><br>
+
+            <strong>5º Passo:</strong> 
+            Por último é a vez do computador jogar, seguindo os passos
+            anteriores (1 a 4). <br><br>
+
+            <strong>6º Passo:</strong> 
+            O vencedor é aquele que obtiver um menor valor (total em soma) de números
+            desbloqueados. O Vencedor ganha o mesmo número de pontos que resulta da subtração da
+            soma de números bloqueados pelo adversário e a soma dos seus. <br><br>
+            <a style="float: right; margin: 6px; color: red;" href="<?= URL::toRoute('game/game') ?>">Fechar</a>
+        </div>
+        
+
+    </div>
+</div> <!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>

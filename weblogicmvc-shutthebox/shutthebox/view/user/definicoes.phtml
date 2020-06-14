@@ -1,98 +1,104 @@
 <?php
 
+use ArmoredCore\WebObjects\Data;
 use ArmoredCore\WebObjects\ErrMgr;
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\Session;
 use ArmoredCore\WebObjects\URL;
 
 $user = Session::get('user');
-Layout::includeLayout('header-login');?>
+$score = Data::get('score');
+Layout::includeLayout('header-login'); ?>
 
-<?php ErrMgr::attach($user)?>
+<?php ErrMgr::attach($user) ?>
 
 <!-- container -->
 <div class="container">
     <div id="caixa-estatisticas" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <h2 class="text-center">Estatísticas</h2>
-                <div class="row text-center">
-                    <div class="col-xs-4">
-                        <span>Vitórias</span>
-                    </div>
-                    <div class="col-xs-4">
-                        <span>Derrotas</span>
-                    </div>
-                    <div class="col-xs-4">
-                        <span>Jogos</span>
-                    </div>
-                </div>
-                <div class="row stats-row text-center">
-                    <div class="col-xs-4">
-                        <span>13</span>
-                    </div>
-                    <div class="col-xs-4">
-                        <span>5</span>
-                    </div>
-                    <div class="col-xs-4">
-                        <span>18</span>
-                    </div>
-                </div>
+        <h2 class="text-center">Estatísticas</h2>
+        <div class="row text-center">
+            <div class="col-xs-4">
+                <span>Vitórias</span>
+            </div>
+            <div class="col-xs-4">
+                <span>Derrotas</span>
+            </div>
+            <div class="col-xs-4">
+                <span>Jogos</span>
+            </div>
+        </div>
+        <div class="row stats-row text-center">
+            <div class="col-xs-4">
+                <?php if ($score->vitorias == null) : ?>
+                    <span>0</span>
+                <?php else : ?>
+                    <span><?= $score->vitorias ?></span>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-4">
+                <span><?= $score->njogos - $score->vitorias ?></span>
+            </div>
+            <div class="col-xs-4">
+                <span><?= $score->njogos ?></span>
+            </div>
+        </div>
     </div>
-        <div id="caixa-dados-pessoais" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <h2 class="text-center">Dados Pessoais</h2>
-            <form action="<?=URL::toRoute('user/update', $user->id)?>" method="post">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <span>Username</span>
-                    </div>
-                    <div class="row username-row">
-                        <div class="col-xs-12">
-                            <span class="definicoes-username"><?=$user->username?></span>
-                        </div>
+    <div id="caixa-dados-pessoais" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <h2 class="text-center">Dados Pessoais</h2>
+        <form action="<?= URL::toRoute('user/update', $user->id) ?>" method="post">
+            <div class="row">
+                <div class="col-xs-12">
+                    <span>Username</span>
+                </div>
+                <div class="row username-row">
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" value="<?= $user->username ?>" disabled>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <label for="nome">Nome</label>
-                        <input id="nome" name="primeironome" type="text" class="form-control" placeholder="Nome" value="<?=$user->primeironome?>" required>
-                        <span><?=ErrMgr::bind('primeironome')?></span>
-                    </div>
-                    <div class="col-xs-6">
-                        <label for="apelido">Apelido</label>
-                        <input id="apelido" name="apelido" type="text" class="form-control" placeholder="Apelido" value="<?=$user->apelido?>" required>
-                        <span><?=ErrMgr::bind('apelido')?></span>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="nome">Nome</label>
+                    <input id="nome" name="primeironome" type="text" class="form-control" placeholder="Nome" value="<?= $user->primeironome ?>" required>
+                    <span><?= ErrMgr::bind('primeironome') ?></span>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <label for="data-nascimento">Data de Nascimento</label>
-                        <input type="date" name="datanascimento" id="data-nascimento" class="form-control" placeholder="DD/MM/AAAA" value="<?=$user->datanascimento?>" required>
-                        <span><?=ErrMgr::bind('datanascimento')?></span>
-                    </div>
+                <div class="col-xs-6">
+                    <label for="apelido">Apelido</label>
+                    <input id="apelido" name="apelido" type="text" class="form-control" placeholder="Apelido" value="<?= $user->apelido ?>" required>
+                    <span><?= ErrMgr::bind('apelido') ?></span>
                 </div>
-                <!-- <div class="row">
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="data-nascimento">Data de Nascimento</label>
+                    <input type="date" name="datanascimento" id="data-nascimento" class="form-control" placeholder="DD/MM/AAAA" value="<?= $user->datanascimento ?>" required>
+                    <span><?= ErrMgr::bind('datanascimento') ?></span>
+                </div>
+            </div>
+            <!-- <div class="row">
                     <div class="col-xs-12">
                         <hr>
                     </div>
                 </div> -->
-                <div class="row">
-                    <div class="col-xs-6">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" type="email" class="form-control" placeholder="Email" value="<?=$user->email?>" required>
-                        <span> <?=ErrMgr::bind('email')?> </span>
-                    </div>
-                    <div class="col-xs-6">
-                        <label for="senha-login">Password</label>
-                        <input id="senha-login" name="password" type="password" class="form-control" placeholder="Nova senha">
-                        <span><?=ErrMgr::bind('password')?></span>
-                    </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" class="form-control" placeholder="Email" value="<?= $user->email ?>" required>
+                    <span> <?= ErrMgr::bind('email') ?> </span>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 text-right">
-                        <button class="btn btn" type="submit">Guardar Alterações</button>
-                    </div>
+                <div class="col-xs-6">
+                    <label for="senha-login">Password</label>
+                    <input id="senha-login" name="password" type="password" class="form-control" placeholder="Nova senha">
+                    <span><?= ErrMgr::bind('password') ?></span>
                 </div>
-            </form>
-        </div>
-
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <button class="btn btn" type="submit">Guardar Alterações</button>
+                </div>
+            </div>
+        </form>
     </div>
+
+</div>
 </div> <!-- /container -->

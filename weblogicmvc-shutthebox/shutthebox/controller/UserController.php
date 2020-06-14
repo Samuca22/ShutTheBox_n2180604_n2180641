@@ -19,7 +19,6 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
      */
     public function index()
     {
-
     }
 
     /**
@@ -93,7 +92,10 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
     public function edit($id)
     {
         $user = User::find($id);
-        return View::make('user.definicoes', ['user' => $user]);
+        $score = Score::find_by_sql('SELECT userID, SUM(resultado) as vitorias, COUNT(resultado) as nJogos FROM `scores` WHERE userID=' . $id);
+        $score = $score[0];
+
+        return View::make('user.definicoes', ['user' => $user, 'score' => $score]);
     }
 
     public function update($id)
@@ -102,36 +104,25 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
         $dados = Post::getAll();
         $emailValido = true;
 
-        if ($user->email != $dados['email']) 
-        {
+        if ($user->email != $dados['email']) {
             $findEmail = User::find_by_email($dados['email']);
-            if (count($findEmail) != 0) 
-            {
+            if (count($findEmail) != 0) {
                 $emailValido = false;
-            } 
-            else 
-            {
+            } else {
                 $emailValido = true;
+                $user->update_attributes(array('email' => $dados['email']));
             }
-        }   
-
-        if(empty($dados['password']))
-        {
-            $user->update_attributes(array('primeironome' => $dados['primeironome']));
-            $user->update_attributes(array('apelido' => $dados['apelido']));
-            $user->update_attributes(array('email' => $dados['email']));
-            $user->update_attributes(array('datanascimento' => $dados['datanascimento']));
         }
-        else
-        {
-            $user->update_attributes(Post::getAll());
+
+        $user->update_attributes(array('primeironome' => $dados['primeironome']));
+        $user->update_attributes(array('apelido' => $dados['apelido']));
+        $user->update_attributes(array('datanascimento' => $dados['datanascimento']));
+
+        if (!empty($dados['password'])) {
             $user->update_attributes(array('password' => password_hash($dados['password'], PASSWORD_DEFAULT)));
         }
 
-        // $user->update_attributes(Post::getAll());
-
-        if ($user->is_valid() && $emailValido == true) 
-        {
+        if ($user->is_valid() && $emailValido == true) {
             $user->save();
 
             Session::set('user', $user);
@@ -139,7 +130,9 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
             return Redirect::toRoute('home/index');
         }
 
-        return Redirect::flashToRoute('user/edit', ['user' => $user], $id);
+        $score = Score::find_by_sql('SELECT userID, SUM(resultado) as vitorias, COUNT(resultado) as nJogos FROM `scores` WHERE userID=' . $id);
+        $score = $score[0];
+        return Redirect::flashToRoute('user/edit', ['user' => $user, 'score' => $score], $id);
     }
 
     /**
@@ -165,6 +158,5 @@ class UserController extends BaseController implements \ArmoredCore\Interfaces\R
 
     public function destroy($id)
     {
-
     }
 }

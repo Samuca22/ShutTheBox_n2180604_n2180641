@@ -87,6 +87,32 @@ class HomeController extends BaseController
         }
     }
 
+    public function comojogar()
+    {
+        // Se um utilizador estiver logado e for admin -> Backoffice
+        if (Session::has('user')) {
+            $user = Session::get('user');
+            if ($user->administrador == 1) {
+                return Redirect::toRoute('home/backoffice');
+            }
+        }
+
+        return View::make('home.como-jogar');
+    }
+
+    public function comojogargame()
+    {
+        // Se um utilizador estiver logado e for admin -> Backoffice
+        if (Session::has('user')) {
+            $user = Session::get('user');
+            if ($user->administrador == 1) {
+                return Redirect::toRoute('home/backoffice');
+            }
+        }
+
+        return View::make('home.como-jogar-game');
+    }
+
     public function definicoes(){
         return View::make('user.definicoes');
     }

@@ -47,7 +47,7 @@ if(Session::has('user'))
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
                 <li><a href="<?= URL::toRoute('home/index')?>">Home</a></li>
-                <li><a href="<?= URL::toRoute('home/comojogar')?>">Como Jogar?</a></li>
+                <li><a href="<?= URL::toRoute('home/como-jogar')?>">Como Jogar?</a></li>
                 <li><a href="<?= URL::toRoute('home/topten')?>">Top 10</a></li>
                 <li><a href="<?= URL::toRoute('user/edit', Session::get('user')->id)?>">Definições</a></li>
                 <li><a id="header-btn-sair" class="btn" href="<?= URL::toRoute('auth/logout')?>">Sair - <?= $username ?></a></li>
