@@ -88,7 +88,7 @@ body{
 
 .players-box{
     display: inline;
-    margin-left: 60px;
+    margin-left: 120px;
 }
 
 #header-btn-sair:hover{
@@ -373,7 +373,7 @@ body{
     transition: 0.2s;
 }
 
-#tabuleiro-jogo .btn.btn-lancar-dados, #resultado-jogo .btn.btn-lancar-dados, #resultado-jogo .btn.btn-sair-jogo{
+#tabuleiro-jogo .btn.btn-lancar-dados, #tabuleiro-jogo .btn.btn-novo-jogo, #tabuleiro-jogo .btn.btn-sair-jogo{
     background-color: rgba(255, 255, 255, 0);
     border: 1px solid #ffffff;
     font-size: 26px;
@@ -382,38 +382,30 @@ body{
     transition: 0.2s;
 }
 
-#tabuleiro-jogo .caixa-numero:hover, #tabuleiro-jogo .caixa-numero-comp:hover, #tabuleiro-jogo .btn.btn-lancar-dados:hover, #resultado-jogo .btn.btn-lancar-dados:hover{
+#tabuleiro-jogo .btn.btn-sair-jogo{
+    border: 1px solid rgb(216, 66, 66);
+}
+
+#tabuleiro-jogo .caixa-numero:hover, #tabuleiro-jogo .caixa-numero-comp:hover, #tabuleiro-jogo .btn.btn-lancar-dados:hover, #tabuleiro-jogo .btn.btn-novo-jogo:hover{
     cursor: pointer;
     background-color: rgb(255, 255, 255);
     color: #242B48;
     text-decoration: none;
 }
 
+#tabuleiro-jogo .btn.btn-novo-jogo:hover{
+    color: rgb(62, 167, 62);
+    border: 1px solid #fff;
+}
+
 #tabuleiro-jogo .caixa-numero-comp, #tabuleiro-jogo .caixa-numero-comp-bloqueado{
     float: right;
 }
 
-#resultado-jogo *{
-    color: #fff;
-    font-size: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-#resultado-jogo h1{
-    font-size: 80px;
-    margin-top: 120px;
-    letter-spacing: 10px;
-}
-
-#resultado-jogo .row{
-    text-align: center;
-    margin: 20px;
-}
-
-#resultado-jogo .btn.btn-sair-jogo:hover{
+#tabuleiro-jogo .btn.btn-sair-jogo:hover{
     background-color: #fff;
     color: rgb(223, 41, 41);
+    border: 1px solid #fff;
 }
 
 /**** BACKOFFICE ****/
