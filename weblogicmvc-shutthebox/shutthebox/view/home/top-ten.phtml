@@ -1,10 +1,13 @@
 <?php
 
 use ArmoredCore\WebObjects\Asset;
+use ArmoredCore\WebObjects\Data;
 use ArmoredCore\WebObjects\Layout;
 use ArmoredCore\WebObjects\URL;
 
-Layout::includeLayout('header') ?>
+Layout::includeLayout('header');
+$scores = Data::get('scores');
+$i = 1; ?>
 
 <!-- container -->
 <div class="container" id="topten">
@@ -17,50 +20,24 @@ Layout::includeLayout('header') ?>
                 <thead>
                     <tr>
                         <th>Username</th>
-                        <th class="text-right">Vitórias</th>
+                        <th class="text-right">Pontuação</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Player1 <img src="<?= Asset::image('taca-1.png')?>" alt="taça" height="16"></td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1 <img src="<?= Asset::image('taca-2.png')?>" alt="taça" height="16"></td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1 <img src="<?= Asset::image('taca-3.png')?>" alt="taça" height="16"></td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1</td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1</td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1</td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1</td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1</td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1</td>
-                        <td class="text-right">10</td>
-                    </tr>
-                    <tr>
-                        <td>Player1</td>
-                        <td class="text-right">10</td>
-                    </tr>
+                    <?php foreach ($scores as $score) : ?>
+                        <?php if ($i <= 3) : ?>
+                            <tr>
+                                <td><?= $score->userid ?> <img src="<?= Asset::image('taca-' . $i . '.png') ?>" alt="taça" height="16"></td>
+                                <td class="text-right"><?= $score->pontuacao ?></td>
+                            </tr>
+                            <?php $i++; ?>
+                        <?php else : ?>
+                            <tr>
+                                <td><?= $score->userid ?></td>
+                                <td class="text-right"><?= $score->pontuacao ?></td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </tbody>
 
             </table>

@@ -5,6 +5,8 @@
 -- DROP DATABASE shutthebox; 
 -- CREATE DATABASE IF NOT EXISTS `shutthebox`;
 
+CREATE DATABASE IF NOT EXISTS shutthebox;
+
 USE shutthebox;
 
 CREATE TABLE IF NOT EXISTS `users`(
@@ -30,9 +32,10 @@ PRIMARY KEY (`id`),
 FOREIGN KEY (`userID`) REFERENCES `users`(`id`)
 )ENGINE=InnoDB;
 
--- USER: ADMINISTRADOR
+-- USER: ADMINISTRADOR, USER
 INSERT INTO `users` (`primeiroNome`, `apelido`, `username`, `password`, `email`, `dataNascimento`, `estado`, `administrador`)
-VALUES ('Admin', 'Admin', 'admin', 'admin', 'admin@shutthebox.pt', '1999-01-01', TRUE, TRUE);
+VALUES ('Admin', 'Admin', 'admin', 'admin', 'admin@shutthebox.pt', '1999-01-01', TRUE, TRUE),
+('User', 'User', 'user', 'user', 'user@shutthebox.pt', '1995-03-03', TRUE, FALSE);
 
 -- QUERY
 /* 

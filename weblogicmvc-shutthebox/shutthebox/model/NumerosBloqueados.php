@@ -5,39 +5,42 @@ class NumerosBloqueados
     public $numBlock; // array - atributo PRIVATE
     public $numerosSelecionados; // array
 
-
+    // Inicia jogo com todos os numeros desbloqueados.
     public function __construct()
     {
+        // Números selecionados entre cada jogada
         $this->numerosSelecionados = array();
         $this->numBlock = array(1 => false, 2 => false, 3 => false, 4 => false, 5 => false, 6 => false, 7 => false, 8 => false, 9 => false);
     }
 
-
+    
     public function bloquearNumero($numeroSelecionado, $somaDados)
     {
         // Se número estiver desbloqueado
         if ($this->numBlock[$numeroSelecionado] == false) {
             // bloqueia
-            array_push($this->numerosSelecionados, $numeroSelecionado);
+            array_push($this->numerosSelecionados, $numeroSelecionado); // Insere número no array "numerosSelecionados"
             $this->numBlock[$numeroSelecionado] = true;
         } else {
             // desbloqueia
             $this->numBlock[$numeroSelecionado] = false;
 
 
-            $index = array_search($numeroSelecionado, $this->numerosSelecionados);
+            $index = array_search($numeroSelecionado, $this->numerosSelecionados); // "Retira número do array "numerosSelecionados"
             $this->numerosSelecionados[$index] = 0;
         }
 
+        // Verificar se a soma dos dados é igual à soma dos números dentro do array numerosSelecionados
         if ($somaDados == array_sum($this->numerosSelecionados)) {
             $this->numerosSelecionados = array();
             return false;
         }
+
         return true;
     }
 
 
-    public function checkFinalJogada(/*array$numerosSelecionados, */$somaDados)
+    public function checkFinalJogada($somaDados)
     {
         $numerosDesbloqueados = array();
         $arrayKeys = array_keys($this->numBlock);
@@ -140,6 +143,7 @@ class NumerosBloqueados
             }
         }
         
+        // Pontuação = soma de números desbloqueados.
         return array_sum($numerosDesbloqueados);
     }
 }

@@ -26,6 +26,8 @@ Router::get('game/game',  'GameController/game');
 Router::get('game/lancarDados',  'GameController/lancarDados');
 Router::get('game/bloquearNumero',  'GameController/bloquearNumero');
 Router::get('game/resultado', 'GameController/resultado');
+Router::get('game/novoJogo', 'GameController/novoJogo');
+Router::get('game/sairJogo', 'GameController/sairJogo');
 
 
 Router::resource('user', 'UserController');
